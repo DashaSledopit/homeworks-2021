@@ -30,11 +30,7 @@ module ArrayModule
     end
 
     def my_empty?
-      if length.zero?
-        true
-      else
-        false
-      end
+      length.zero? ? true : false
     end
 
     def my_count
