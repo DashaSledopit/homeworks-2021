@@ -17,5 +17,5 @@ def task2(logs)
     end
   end
 
-  p post_requests
+  post_requests
 end
