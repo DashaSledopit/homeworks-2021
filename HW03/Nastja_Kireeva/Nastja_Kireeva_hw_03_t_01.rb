@@ -1,4 +1,4 @@
 def task1(logs)
-  lines = logs.split(/\n/)
-  lines.map { |line| line.downcase.include?('error') ? line : '' }.join
+  error_line = logs.split(/\n/).find { |line| line.downcase.include?('error') }
+  error_line.nil? ? '' : error_line
 end
