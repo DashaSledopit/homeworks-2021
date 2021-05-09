@@ -10,7 +10,7 @@ module App
 
     homework = mentor.add_homework(title: 'HW03',
                                    description: 'description homework',
-                                   student: student)
+                                   student: student, mentor: mentor)
 
     p student.notifications
     student.mark_as_read!

@@ -10,7 +10,7 @@ class Student
 
   def to_work!(homework)
     @homeworks << homework
-    notification = Notification.new(homework: homework).send_message[:to_work]
+    notification = Notification.new(homework: homework, status: :to_work).message
     mentor.notifications << notification
   end
 
@@ -23,7 +23,7 @@ class Student
   end
 
   def to_check!(homework)
-    notification = Notification.new(homework: homework).send_message[:to_check]
+    notification = Notification.new(homework: homework, status: :to_check).message
     mentor.notifications << notification
   end
 end
