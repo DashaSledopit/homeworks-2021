@@ -3,7 +3,7 @@ require './Nastja_Kireeva_hw_03_t_04'
 RSpec.describe 'Task4' do
   describe '.task4' do
     context 'when string is given' do
-      it 'returns the count of letters and digits in the string' do
+      it 'returns the count of letters and digits in the string', :aggregate_failures do
         expect(task4('wicked .. !')).to eq({ digits: 0, letters: 6 })
         expect(task4('hel2!lo')).to eq({ digits: 1, letters: 5 })
       end

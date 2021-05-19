@@ -36,29 +36,29 @@ RSpec.describe 'Task3' do
   end
 
   describe '.calculate_diff' do
-    let(:valid_events) do
-      [
-        '2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action: event',
-        '2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - Calling core with action: messages'
-      ]
-    end
-
-    let(:invalid_events) do
-      [
-        '2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101',
-        '2018-04-23 17:18:59.8 ubuntu-xenial[14319] Debug - inside docker_handle_event'
-      ]
-    end
-
     let(:empty_events) { [] }
 
     context 'when events are valid' do
+      let(:valid_events) do
+        [
+          '2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action:
+          event',
+          '2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - Calling core with action:
+          messages'
+        ]
+      end
       it 'returns a duration between the events' do
         expect(calculate_diff(valid_events)).to eq('49.1')
       end
     end
 
     context 'when events of appropriate format are invalid' do
+      let(:invalid_events) do
+        [
+          '2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101',
+          '2018-04-23 17:18:59.8 ubuntu-xenial[14319] Debug - inside docker_handle_event'
+        ]
+      end
       it 'returns a duration between the events' do
         expect(calculate_diff(invalid_events)).to eq('21.0')
       end
