@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../array_module'
 
 using ArrayModule
@@ -12,6 +14,7 @@ RSpec.describe ArrayModule do
         expect(array.my_empty?).to be false
       end
     end
+
     context 'when array is empty' do
       it 'returns true' do
         expect(empty_array.my_empty?).to be true
@@ -20,17 +23,20 @@ RSpec.describe ArrayModule do
   end
 
   describe '#my_map' do
-    let(:new_array) { [3, 6, 9, 12, 15, 18] }
     context 'when block is given' do
       context 'when array is empty' do
         it 'returns an empty array' do
           expect(empty_array.my_map(&:even?)).to be_empty
         end
       end
+
       context 'when array is not empty' do
+        let(:new_array) { [3, 6, 9, 12, 15, 18] }
+
         it 'returns a modified array' do
           expect(array.my_map { |element| element * 3 }).to eq new_array
         end
+
         it 'does not affect the original array' do
           expect(array.my_map(&:even?).object_id).not_to eq array.object_id
         end
@@ -64,6 +70,7 @@ RSpec.describe ArrayModule do
         it 'returns the array' do
           expect(array.my_each {}).to eq array
         end
+
         it 'returns the same array' do
           expect(array.my_each(&:even?).object_id).to eq array.object_id
         end
